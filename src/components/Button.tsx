@@ -1,3 +1,4 @@
+import { render } from "react-dom";
 import React, { createRef, ReactNode } from 'react';
 import styled, { keyframes } from 'styled-components';
 
@@ -57,27 +58,27 @@ const Component = styled.button<any>`
 
 const Button = ({ children, size = 'medium', variant = 'contained', type = 'button', color = 'primary', fullWidth = false, disabled = false, handle }: Properties) => {
 
-    const button: any = createRef();
+    const component: any = createRef();
 
     const handleClick = (event: any) => {
         if(disabled) return;
         if(handle) handle(event);
 
         const circle = document.createElement('span');
-        const diameter = Math.max(button.current.clientWidth, button.current.clientHeight);
+        const diameter = Math.max(component.current.clientWidth, component.current.clientHeight);
         const radius = diameter / 2;
 
         circle.classList.add('ripple');
         circle.style.width = circle.style.height = `${diameter}px`;
-        circle.style.left = `${event.pageX - (button.current.getBoundingClientRect().left + radius)}px`;
-        circle.style.top = `${event.pageY - (button.current.getBoundingClientRect().top + radius)}px`;
+        circle.style.left = `${event.pageX - (component.current.getBoundingClientRect().left + radius)}px`;
+        circle.style.top = `${event.pageY - (component.current.getBoundingClientRect().top + radius)}px`;
 
-        button.current.getElementsByClassName('ripple')[0]?.remove();
-        button.current.appendChild(circle);
+        component.current.getElementsByClassName('ripple')[0]?.remove();
+        component.current.appendChild(circle);
     }
 
     return (
-        <Component ref={button} size={size} variant={variant} type={type} color={color} fullWidth={fullWidth} disabled={disabled} onClick={(event: any) => handleClick(event)}>
+        <Component ref={component} size={size} variant={variant} type={type} color={color} fullWidth={fullWidth} disabled={disabled} onClick={(event: any) => handleClick(event)}>
             {children}
         </Component>
     );

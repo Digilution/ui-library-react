@@ -50,7 +50,7 @@ const Input = styled.input<any>`
 
 const TextField = ({ label, name, type, defaultValue = '', color = 'primary', background = 'default', disabled = false, error = false, handle }: Properties) => {
 
-    const input: any = createRef();
+    const component: any = createRef();
     const [focused, setFocused] = useState(false);
     const [filled, setFilled] = useState(defaultValue?.length > 0);
 
@@ -66,11 +66,11 @@ const TextField = ({ label, name, type, defaultValue = '', color = 'primary', ba
 
     return (
         <Component disabled={disabled}>
-            <Label onClick={() => input?.current?.select()} color={color} background={background} focused={focused} filled={filled} error={error}>
+            <Label onClick={() => component?.current?.select()} color={color} background={background} focused={focused} filled={filled} error={error}>
                 {label}
             </Label>
 
-            <Input name={name} type={type} defaultValue={defaultValue} color={color} focused={focused} filled={filled} error={error} onChange={handleChange} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} ref={input} />
+            <Input name={name} type={type} defaultValue={defaultValue} color={color} focused={focused} filled={filled} error={error} onChange={handleChange} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} ref={component} />
         </Component>
     );
 }

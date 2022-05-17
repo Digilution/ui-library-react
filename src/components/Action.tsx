@@ -56,27 +56,27 @@ const Component = styled.button<any>`
 
 const Action = ({ children, size = 'medium', variant = 'contained', type = 'button', color = 'primary', disabled = false, handle }: Properties) => {
 
-    const action: any = createRef();
+    const component: any = createRef();
 
     const handleClick = (event: any) => {
         if(disabled) return;
         if(handle) handle(event);
 
         const circle = document.createElement('span');
-        const diameter = Math.max(action.current.clientWidth, action.current.clientHeight);
+        const diameter = Math.max(component.current.clientWidth, component.current.clientHeight);
         const radius = diameter / 2;
 
         circle.classList.add('ripple');
         circle.style.width = circle.style.height = `${diameter}px`;
-        circle.style.left = `${event.pageX - (action.current.getBoundingClientRect().left + radius)}px`;
-        circle.style.top = `${event.pageY - (action.current.getBoundingClientRect().top + radius)}px`;
+        circle.style.left = `${event.pageX - (component.current.getBoundingClientRect().left + radius)}px`;
+        circle.style.top = `${event.pageY - (component.current.getBoundingClientRect().top + radius)}px`;
 
-        action.current.getElementsByClassName('ripple')[0]?.remove();
-        action.current.appendChild(circle);
+        component.current.getElementsByClassName('ripple')[0]?.remove();
+        component.current.appendChild(circle);
     }
 
     return (
-        <Component ref={action} size={size} variant={variant} type={type} color={color} disabled={disabled} onClick={(event: any) => handleClick(event)}>
+        <Component ref={component} size={size} variant={variant} type={type} color={color} disabled={disabled} onClick={(event: any) => handleClick(event)}>
             {children}
         </Component>
     );

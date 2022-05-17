@@ -51,7 +51,7 @@ const Area = styled.textarea<any>`
 
 const TextArea = ({ label, name, defaultValue = '', rows = 5, color = 'primary', background = 'default', disabled = false, error = false, handle }: Properties) => {
 
-    const area: any = createRef();
+    const component: any = createRef();
     const [focused, setFocused] = useState(false);
     const [filled, setFilled] = useState(defaultValue?.length > 0);
 
@@ -67,11 +67,11 @@ const TextArea = ({ label, name, defaultValue = '', rows = 5, color = 'primary',
 
     return (
         <Component disabled={disabled}>
-            <Label onClick={() => area?.current?.select()} color={color} background={background} focused={focused} filled={filled} error={error}>
+            <Label onClick={() => component?.current?.select()} color={color} background={background} focused={focused} filled={filled} error={error}>
                 {label}
             </Label>
 
-            <Area name={name} defaultValue={defaultValue} rows={rows} color={color} focused={focused} filled={filled} error={error} onChange={handleChange} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} ref={area} />
+            <Area name={name} defaultValue={defaultValue} rows={rows} color={color} focused={focused} filled={filled} error={error} onChange={handleChange} onFocus={() => setFocused(true)} onBlur={() => setFocused(false)} ref={component} />
         </Component>
     );
 }

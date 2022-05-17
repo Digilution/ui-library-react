@@ -14,6 +14,7 @@ export { default as Alert } from './components/Alert';
 export { default as TextField } from './components/TextField';
 export { default as TextArea } from './components/TextArea';
 export { default as Action } from './components/Action';
+export { default as Checkbox } from './components/Checkbox';
 
 // Functions 
 export const brand = () => {
